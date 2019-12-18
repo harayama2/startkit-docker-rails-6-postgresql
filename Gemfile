@@ -20,6 +20,9 @@ gem 'config'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Added
+  gem 'factory_bot_rails'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -32,9 +35,12 @@ group :development do
   gem 'better_errors'       # エラー画面をデバッグしやすい形に整形してくれる
   gem 'binding_of_caller'   # better-errorsのエラー画面でirbができる
   gem 'bullet'              # 「N+1 問題」を検出してくれる
-  gem 'hirb'                # コンソールのModelの出力結果を表形式で分かりやすく表示する
-  gem 'hirb-unicode'        # 日本語などマルチバイト文字の出力時の出力結果のずれに対応
   gem 'letter_opener_web'   # 送信したメールを確認できる
   gem 'pry-rails'           # コンソールをirbからpryに置き換える。
   gem 'pry-byebug'          # ソースコードにブレークポイントを埋め込んで、所定のポイントでpryを起動
+end
+
+group :test do
+  gem 'fuubar'
+  gem 'simplecov', require: false
 end
