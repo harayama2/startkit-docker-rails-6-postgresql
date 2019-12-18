@@ -1,0 +1,13 @@
+app:
+  title: App
+  title_short: App
+
+action_mailer:
+  title_prefix: <%= ENV.fetch("EMAIL_TITLE")        { "【App】" } %>
+  address:      <%= ENV.fetch("EMAIL_ADDRESS")      { "" } %>
+  domain:       <%= ENV.fetch("EMAIL_DOMAIN")       { "" } %>
+  from:         <%= ENV.fetch("EMAIL_FROM")         { "app@example.com" } %>
+  port:         <%= ENV.fetch("EMAIL_PORT")         { "" } %>
+  default_url:  <%= ENV.fetch("EMAIL_DEFAULT_URL")  { "http://localhost:3000" } %>
+  user_name:    <%= ENV.fetch("SENDGRID_USERNAME")  { "" } %>
+  password:     <%= ENV.fetch("SENDGRID_PASSWORD")  { "" } %>
