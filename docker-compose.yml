@@ -8,6 +8,7 @@ services:
     env_file: .env.dev
     environment:
       - EDITOR=vim
+      - SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub
       - WEBPACKER_DEV_SERVER_HOST=webpack
     ports:
       - "3000:3000"
@@ -39,6 +40,10 @@ services:
       TZ: Asia/Tokyo
     volumes:
       - store:/var/lib/postgresql/data
+  selenium_chrome:
+    image: selenium/standalone-chrome-debug
+    logging:
+      driver: none
 volumes:
   store:
   bundle:

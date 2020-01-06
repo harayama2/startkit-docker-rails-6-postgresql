@@ -36,11 +36,13 @@ group :development do
   gem 'binding_of_caller'   # better-errorsのエラー画面でirbができる
   gem 'bullet'              # 「N+1 問題」を検出してくれる
   gem 'letter_opener_web'   # 送信したメールを確認できる
-  gem 'pry-rails'           # コンソールをirbからpryに置き換える。
   gem 'pry-byebug'          # ソースコードにブレークポイントを埋め込んで、所定のポイントでpryを起動
+  gem 'pry-rails'           # コンソールをirbからpryに置き換える。
 end
 
 group :test do
+  gem 'capybara'
   gem 'fuubar'
+  gem 'selenium-webdriver'
   gem 'simplecov', require: false
 end
