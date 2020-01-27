@@ -10,8 +10,8 @@ $ cd YOUR_PROJECT
 $ git clone git@github.com:harayama-developmer/startkit-docker-rails-6-postgresql.git .
 $ rm -rf .git/
 $ docker-compose build
+$ docker-compose run --rm web bin/yarn install
 $ docker-compose run --rm web bundle exec rails db:create
 $ docker-compose run --rm web bundle exec rails db:migrate
-$ docker-compose run --rm web bin/yarn install
 $ docker-compose up
 ```
