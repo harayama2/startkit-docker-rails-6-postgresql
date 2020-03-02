@@ -18,6 +18,7 @@ gem 'tzinfo-data'
 # Added
 gem 'config'
 gem 'haml-rails'
+gem 'rails-i18n', '~> 6.0.0'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
