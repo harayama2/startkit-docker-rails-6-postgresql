@@ -47,7 +47,8 @@ jobs:
       - install_dependencies
       - run:
           name: Database Setup
-          command: bundle exec rails db:create db:schema:load --trace
+          # command: bundle exec rails db:create db:schema:load --trace # Use this in your project
+          command: bundle exec rails db:create db:migrate --trace
       - run:
           name: Rspec
           command: bundle exec rspec
