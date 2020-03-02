@@ -15,3 +15,21 @@ $ docker-compose run --rm web bundle exec rails db:create
 $ docker-compose run --rm web bundle exec rails db:migrate
 $ docker-compose up
 ```
+
+## Test
+
+#### Rspec
+
+```bash
+$ docker-compose run --rm web bundle exec rspec
+```
+
+#### Rubocop
+
+```bash
+# Auto correct
+$ docker-compose run --rm web bundle exec rubocop --auto-correct
+# Move detected offenses to .rubycop_todo.yml
+$ docker-compose run --rm web bundle exec rubocop --auto-gen-config
+```
+
