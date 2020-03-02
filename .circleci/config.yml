@@ -1,0 +1,61 @@
+version: 2.1
+
+executors:
+  default:
+    docker:
+      - image: circleci/ruby:2.6.5-stretch-node-browsers-legacy
+        environment:
+          RAILS_ENV: test
+          RACK_ENV: test
+          DATABASE_HOST: 127.0.0.1
+      - image: circleci/postgres:11.0
+        environment:
+          POSTGRES_USER: root
+          POSTGRES_DB: app_test
+
+    working_directory: ~/repo
+
+commands:
+  install_dependencies:
+    description: "bundle install with cache"
+    steps:
+      - restore_cache:
+          keys:
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+            - gem-cache-v1-{{ arch }}-{{ .Branch }}
+            - gem-cache-v1
+      - run: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          key: gem-cache-v1-{{ arch }}-{{ .Branch }}-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
+
+jobs:
+  rubocop:
+    executor: default
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Rubocop
+          command: bundle exec rubocop
+  rspec:
+    executor: default
+    steps:
+      - checkout
+      - install_dependencies
+      - run:
+          name: Database Setup
+          command: bundle exec rails db:create db:schema:load --trace
+      - run:
+          name: Rspec
+          command: bundle exec rspec
+
+workflows:
+  test:
+    jobs:
+      - rubocop
+      - rspec:
+          requires:
+            - rubocop
