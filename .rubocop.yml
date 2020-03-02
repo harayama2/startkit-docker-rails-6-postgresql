@@ -19,6 +19,8 @@ AllCops:
     - tmp/*
     - vendor/**/*
     - config/spring.rb
+    - config/application.rb
+    - config/environments/*
 
 Style/AsciiComments:
   Enabled: false
