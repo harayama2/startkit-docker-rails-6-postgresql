@@ -17,7 +17,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'tzinfo-data'
 # Added
 gem 'config'
-gem 'haml-rails'
+gem 'hamlit-rails'
 gem 'rails-i18n', '~> 6.0.0'
 
 group :development, :test do
