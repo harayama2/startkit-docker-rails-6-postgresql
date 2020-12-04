@@ -64,6 +64,9 @@ Rails.application.configure do
   # Show 'better_errors' console on docker
   BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
 
+  # IP White list
+  config.web_console.whitelisted_ips = '0.0.0.0/0'
+
   # 'bullet' settings
   config.after_initialize do
     Bullet.enable = true # Bulletプラグインを有効
